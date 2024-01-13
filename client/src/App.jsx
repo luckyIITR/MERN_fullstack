@@ -10,6 +10,8 @@ import { Provider } from 'react-redux';
 import store from './store';
 import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './store/actions/auth';
+import Dashboard from './components/dashboard/Dashboard';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 
 function App() {
@@ -39,6 +41,8 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/dashboard' element={<PrivateRoute component = {Dashboard} />} />
+
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux';
+import { setAlert } from '../../store/actions/alert';
+import { login } from '../../store/actions/auth';
+import PropTypes from 'prop-types';
 
-function Login() {
+function Login({ setAlert, login }) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -13,8 +17,8 @@ function Login() {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
-        // login(email, password);
+        // console.log(formData);
+        login(email, password);
     };
 
     return (
@@ -54,4 +58,9 @@ function Login() {
     )
 }
 
-export default Login
+Login.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert, login })(Login);

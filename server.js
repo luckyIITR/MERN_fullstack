@@ -1,15 +1,28 @@
 import express from "express";
 import dotenv from "dotenv";
+import morgan from "morgan";
+import cors from "cors";
+// import cookieParser from "cookie-parser";
 import connectDB from "./config/db.js";
+import auth from "./routes/api/auth.js"
+import profile from "./routes/api/profile.js"
+
 
 dotenv.config({
   path: "config/process.env",
 });
+const app = express();
+app.use(cors());
+// app.use(cookieParser());
+app.use(express.json());
+app.use(morgan("dev"));
 
 // Connect Database
 connectDB();
 
-const app = express();
+// Define Routes
+app.use('/api/auth', auth);
+app.use('/api/profile', profile);
 
 app.get("/", (req, res) => res.send("API Running"));
 

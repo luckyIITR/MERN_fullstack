@@ -35,7 +35,7 @@ function Register({setAlert, register}) {
             <form className="form" onSubmit={onSubmit}>
                 <div className="form-group">
                     <input type="text" placeholder="Name" name="name" value={name}
-                        onChange={onChange} required />
+                        onChange={onChange} />
                 </div>
                 <div className="form-group">
                     <input type="email" placeholder="Email Address" name="email" value={email}
@@ -50,7 +50,6 @@ function Register({setAlert, register}) {
                         type="password"
                         placeholder="Password"
                         name="password"
-                        minLength="6"
                         value={password}
                         onChange={onChange}
                     />
@@ -60,7 +59,6 @@ function Register({setAlert, register}) {
                         type="password"
                         placeholder="Confirm Password"
                         name="password2"
-                        minLength="6"
                         value={password2}
                         onChange={onChange}
                     />

@@ -6,6 +6,16 @@ import jwt from 'jsonwebtoken';
 import normalize from 'normalize-url';
 
 
+const getuser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+}
+
 const Login = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -106,4 +116,4 @@ const Register = async (req, res) => {
   }
 };
 
-export { Login, Register };
+export { Login, Register, getuser };

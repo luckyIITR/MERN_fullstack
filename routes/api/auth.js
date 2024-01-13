@@ -1,8 +1,15 @@
 import express from "express";
-import { Login, Register } from "../../controllers/authController.js";
+import { Login, Register, getuser } from "../../controllers/authController.js";
 import { check } from "express-validator";
+import authmiddleware from "../../middleware/auth.js";
 
 const router = express.Router();
+
+// @route    GET api/auth
+// @desc     Get user by token
+// @access   Private
+router.get('/', authmiddleware, getuser);
+
 
 // @route    POST api/auth
 // @desc     Authenticate user & get token

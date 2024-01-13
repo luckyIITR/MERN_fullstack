@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux';
-import { setAlert } from '../../store/actions/alert';
 import { login } from '../../store/actions/auth';
+import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function Login({ setAlert, login }) {
+function Login({ login, isAuthenticated }) {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -21,11 +21,13 @@ function Login({ setAlert, login }) {
         login(email, password);
     };
 
+    if (isAuthenticated) {
+        return <Navigate to="/dashboard" />;
+    }
+
     return (
         <section className="container">
-            <div className="alert alert-danger">
-                Invalid credentials
-            </div>
+
             <h1 className="large text-primary">Sign In</h1>
             <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
             <form className="form" onSubmit={onSubmit}>
@@ -36,7 +38,6 @@ function Login({ setAlert, login }) {
                         name="email"
                         value={email}
                         onChange={onChange}
-                        required
                     />
                 </div>
                 <div className="form-group">
@@ -46,7 +47,6 @@ function Login({ setAlert, login }) {
                         name="password"
                         value={password}
                         onChange={onChange}
-                        minLength="6"
                     />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Login" />
@@ -59,8 +59,12 @@ function Login({ setAlert, login }) {
 }
 
 Login.propTypes = {
-    setAlert: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 };
 
-export default connect(null, { setAlert, login })(Login);
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { login })(Login);

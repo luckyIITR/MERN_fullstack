@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../store/actions/alert';
 import { register } from '../../store/actions/auth';
+import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-function Register({setAlert, register}) {
+function Register({ setAlert, register, isAuthenticated }) {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -27,6 +28,9 @@ function Register({setAlert, register}) {
         }
     };
 
+    if (isAuthenticated) {
+        return <Navigate to="/dashboard" />;
+    }
 
     return (
         <section className="container">
@@ -77,4 +81,8 @@ Register.propTypes = {
     register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert, register })(Register);
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

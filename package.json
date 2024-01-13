@@ -5,14 +5,15 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start" : "node server",
-    "server" : "nodemon server"
+    "start": "node server",
+    "server": "nodemon server"
   },
   "author": "Lucky Kushwaha",
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.10",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "express-validator": "^7.0.1",
     "gravatar": "^1.8.2",

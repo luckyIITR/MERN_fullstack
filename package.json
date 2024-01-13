@@ -6,13 +6,14 @@
   "type": "module",
   "scripts": {
     "start": "node server",
-    "server" : "nodemon server",
-    "client" : "npm run dev --prefix client",
+    "server": "nodemon server",
+    "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Lucky Kushwaha",
   "license": "MIT",
   "dependencies": {
+    "axios": "^1.6.5",
     "bcryptjs": "^2.4.3",
     "config": "^3.3.10",
     "cors": "^2.8.5",

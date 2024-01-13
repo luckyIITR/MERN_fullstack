@@ -6,6 +6,8 @@ import cors from "cors";
 import connectDB from "./config/db.js";
 import auth from "./routes/api/auth.js"
 import profile from "./routes/api/profile.js"
+import post from "./routes/api/post.js"
+
 
 
 dotenv.config({
@@ -23,6 +25,8 @@ connectDB();
 // Define Routes
 app.use('/api/auth', auth);
 app.use('/api/profile', profile);
+app.use('/api/post', post);
+
 
 app.get("/", (req, res) => res.send("API Running"));
 

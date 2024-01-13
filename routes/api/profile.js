@@ -1,5 +1,7 @@
 import express from "express";
 import authmiddleware from "../../middleware/auth.js";
+import { check } from "express-validator";
+
 import {
   getProfile,
   create_update_profile,

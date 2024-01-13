@@ -1,6 +1,6 @@
-import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
-authmiddleware = function (req, res, next) {
+const authmiddleware = (req, res, next) => {
   // Get token from header
   const token = req.header("x-auth-token");
 
@@ -11,7 +11,7 @@ authmiddleware = function (req, res, next) {
 
   // Verify token
   try {
-    verify(token, process.env.JWT_KEY, (error, decoded) => {
+    jwt.verify(token, process.env.JWT_KEY, (error, decoded) => {
       if (error) {
         return res.status(401).json({ msg: "Token is not valid" });
       } else {

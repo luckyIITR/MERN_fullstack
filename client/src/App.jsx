@@ -12,6 +12,10 @@ import setAuthToken from './utils/setAuthToken';
 import { loadUser } from './store/actions/auth';
 import Dashboard from './components/dashboard/Dashboard';
 import PrivateRoute from './components/routing/PrivateRoute';
+import ProfileForm from './components/profile-forms/ProfileForm';
+import AddEducation from './components/profile-forms/AddEducation';
+import AddExperience from './components/profile-forms/AddExperience';
+
 
 
 function App() {
@@ -41,8 +45,11 @@ function App() {
           <Route path="/" element={<Landing />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/dashboard' element={<PrivateRoute component = {Dashboard} />} />
-
+          <Route path='/dashboard' element={<PrivateRoute component={Dashboard} />} />
+          <Route path="/create-profile" element={<PrivateRoute component={ProfileForm} />} />
+          <Route path="/edit-profile" element={<PrivateRoute component={ProfileForm} />} />
+          <Route path="/add-experience" element={<PrivateRoute component={AddExperience} />} />
+          <Route path="/add-education" element={<PrivateRoute component={AddEducation} />} />
         </Routes>
       </BrowserRouter>
     </Provider>

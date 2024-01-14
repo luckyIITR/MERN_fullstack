@@ -3,7 +3,7 @@ import store from '../store';
 
 // Create an instance of axios
 const api = axios.create({
-    baseURL: 'http://localhost:5000/api',
+    baseURL: 'https://mern-stack-api-m5ne.onrender.com/api',
     headers: {
         'Content-Type': 'application/json'
     }

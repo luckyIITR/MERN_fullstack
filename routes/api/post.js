@@ -6,6 +6,7 @@ import {
   unlikepost,
   commentonpost,
   deletecomment,
+  getallpost,
 } from "../../controllers/postController.js";
 import express from "express";
 import authmiddleware from "../../middleware/auth.js";
@@ -24,6 +25,11 @@ router.post(
   check("text", "Text is required").notEmpty(),
   create_post
 );
+
+// @route    GET api/posts
+// @desc     Get all posts
+// @access   Private
+router.get('/', authmiddleware, getallpost);
 
 // @route    GET api/posts/:id
 // @desc     Get post by ID

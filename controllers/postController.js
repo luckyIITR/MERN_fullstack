@@ -30,6 +30,16 @@ const create_post = async (req, res) => {
   }
 };
 
+const getallpost = async (req, res) => {
+  try {
+    const posts = await Post.find().sort({ date: -1 });
+    res.json(posts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
+
 // @route    GET api/posts/:id
 // @desc     Get post by ID
 // @access   Private
@@ -186,6 +196,7 @@ const deletecomment = async (req, res) => {
 };
 export {
   create_post,
+  getallpost,
   getpostbyid,
   deletepost,
   likepost,

@@ -9,7 +9,7 @@ import {
     GET_POST,
     ADD_COMMENT,
     REMOVE_COMMENT
-} from './types';
+} from '../types';
 
 /*
   NOTE: we don't need a config object for axios as the

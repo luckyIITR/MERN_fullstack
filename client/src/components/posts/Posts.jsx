@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PostItem from './PostItem';
 import PostForm from './PostForm';
-import { getPosts } from '../../store/actions/';
+import { getPosts } from '../../store/actions/post';
 
 const Posts = ({ getPosts, post: { posts } }) => {
     useEffect(() => {

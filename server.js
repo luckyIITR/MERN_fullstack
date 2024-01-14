@@ -25,7 +25,7 @@ connectDB();
 // Define Routes
 app.use('/api/auth', auth);
 app.use('/api/profile', profile);
-app.use('/api/post', post);
+app.use('/api/posts', post);
 
 
 app.get("/", (req, res) => res.send("API Running"));

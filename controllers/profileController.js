@@ -1,6 +1,8 @@
 import Profile from "../models/Profile.js";
 import { validationResult } from "express-validator";
 import normalize from "normalize-url";
+import axios from 'axios';
+
 
 const getProfile = async (req, res) => {
   try {
@@ -194,7 +196,7 @@ const getuserrepo = async (req, res) => {
     );
     const headers = {
       "user-agent": "node.js",
-      Authorization: `token ${config.get("githubToken")}`,
+      // Authorization: `token ${[process.env.githubToken]}`,
     };
 
     const gitHubResponse = await axios.get(uri, { headers });
